@@ -7,7 +7,7 @@ class LoginState extends Equatable {
 
   const LoginState({this.login =
   const Login(userName: '', isReferee: false, isTeam: false, token: ''),
-    this.loginRequestState = RequestState.loading,
+    this.loginRequestState = RequestState.loaded,
     this.errorLoginMessage = ''});
 
   LoginState copyWith({Login? login,

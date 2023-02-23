@@ -16,4 +16,23 @@ class LoginEvent extends RegisterEvent {
   List<Object> get props => [loginParameters];
 }
 
+class CaptureTokenEvent extends RegisterEvent {
+  final Login login;
+
+  const CaptureTokenEvent({required this.login});
+
+  @override
+  List<Object> get props => [login];
+}
+
+class CheckIfLoginBeforeEvent extends RegisterEvent {
+  final NoParameters noParameters;
+
+  const CheckIfLoginBeforeEvent({required this.noParameters});
+
+  @override
+  List<Object> get props => [noParameters];
+}
+
+
 

@@ -3,3 +3,10 @@ enum RequestState{
   loaded,
   error
 }
+
+enum Status{
+  accepted,
+  rejected,
+  pending,
+  flag
+}
