@@ -7,18 +7,6 @@ class CategoryDescriptionScreen extends StatelessWidget {
   const CategoryDescriptionScreen({Key? key, required this.category})
       : super(key: key);
   final Category category;
-  /*
-  final Category category =  const Category(
-      description: 'الزمالك بيفاوض القندوسي بقاله اربع شهور \nالأهلي اول ما اتدخل في الصفقة:',
-      id: 0,
-      name: 'الاطعام',
-      totalScore: 40,
-      activitiesCount: 2,
-      imageUrl: 'https://resala-competitions.herokuapp.com/media/278573485_486774783234932_188433403922598362_n_FpaV73n.jpg',
-      pointsCalculation: 'أهلك فى الكفتين والعالم كله برا، محدش بيدوق المُر \nعشان يدوقك طعم الشهد غيرهم',
-      terms: 'انا  junior flutter developer لو معروض عليا شغل فلاتر ريموتلي لشركة في السعوديه\n هشتغل من مصر ب ١٠٠٠٠ جنيه في الشهر ده كويس ولا لأ \nملحوظة العقد مدته سنتين وده اول شغل ليا'
-  );
-   */
 
   @override
   Widget build(BuildContext context) {

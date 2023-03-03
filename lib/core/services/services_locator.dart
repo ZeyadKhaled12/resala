@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:resala/features/login/domain/usecases/logout_uc.dart';
 import '../../features/login/data/datasource/login_remote_data_source.dart';
 import '../../features/login/data/repository/login_repo.dart';
 import '../../features/login/domain/repository/base_login_repo.dart';
@@ -11,6 +12,7 @@ import '../../features/referee/data/repository/ref_repo.dart';
 import '../../features/referee/domain/repository/base_ref_repo.dart';
 import '../../features/referee/domain/usecases/get_ref_activities_uc.dart';
 import '../../features/referee/domain/usecases/get_ref_categories_uc.dart';
+import '../../features/referee/domain/usecases/update_ref_activity_uc.dart';
 import '../../features/referee/presentation/controller/ref_bloc.dart';
 import '../../features/team/data/datasource/team_remote_data_source.dart';
 import '../../features/team/data/repository/team_repo.dart';
@@ -32,9 +34,9 @@ class ServicesLocator{
   void init(){
 
     //Bloc
-    sl.registerFactory(() => LoginBloc(sl(), sl(), sl()));
+    sl.registerFactory(() => LoginBloc(sl(), sl(), sl(), sl()));
     sl.registerFactory(() => TeamBloc(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
-    sl.registerFactory(() => RefBloc(sl(), sl()));
+    sl.registerFactory(() => RefBloc(sl(), sl(), sl()));
 
 
     //Use Case
@@ -69,6 +71,10 @@ class ServicesLocator{
 
     sl.registerLazySingleton(() =>
         GetRefActivitiesUc(sl()));
+    sl.registerLazySingleton(() =>
+        UpdateRefActivityUc(sl()));
+    sl.registerLazySingleton(() =>
+        LogoutUc(sl()));
 
 
     //Repo
@@ -78,6 +84,7 @@ class ServicesLocator{
         TeamRepo(sl()));
     sl.registerLazySingleton<BaseRefRepo>(() =>
         RefRepo(sl()));
+
 
 
     //Data Source

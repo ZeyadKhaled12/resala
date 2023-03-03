@@ -32,8 +32,7 @@ class SplashScreen extends StatelessWidget {
                           builder: (ctx) => state.login.token.isEmpty
                               ? const LoginScreen()
                               : GeneralWidgetBottom(
-                                  token: state.login.token,
-                                  isRef: state.login.isReferee)));
+                                  login: state.login)));
                 });
               }
             },

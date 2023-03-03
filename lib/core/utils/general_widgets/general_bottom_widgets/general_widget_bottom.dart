@@ -1,24 +1,45 @@
+
 import 'package:flutter/material.dart';
+import '../../../../features/login/domain/entities/login.dart';
 import '../../../../features/referee/presentation/screens/ref_categories_screen.dart';
 import '../../../../features/team/presentation/screens/categories_screen.dart';
+import '../../../../features/login/presentation/screens/profile_screen.dart';
 
-class GeneralWidgetBottom extends StatelessWidget {
+class GeneralWidgetBottom extends StatefulWidget {
   const GeneralWidgetBottom(
-      {Key? key, required this.token, required this.isRef})
+      {Key? key, required this.login})
       : super(key: key);
-  final String token;
-  final bool isRef;
+  final Login login;
+
+  @override
+  _GeneralWidgetBottomState createState() => _GeneralWidgetBottomState();
+}
+
+class _GeneralWidgetBottomState extends State<GeneralWidgetBottom> {
+
+  List<Widget> screens = [];
+  int index = 1;
+
+  @override
+  void initState() {
+    screens = [
+      const Text(''),
+      widget.login.isReferee
+          ? RefCategoriesScreen(token: widget.login.token)
+          : CategoriesScreen(token: widget.login.token),
+      ProfileScreen(login: widget.login)
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Expanded(
-              child: isRef
-                  ? RefCategoriesScreen(token: token)
-                  : CategoriesScreen(token: token)),
+          Expanded(child: screens[index]),
           const Padding(padding: EdgeInsets.only(bottom: 5)),
           Container(
               width: double.infinity,
@@ -34,26 +55,41 @@ class GeneralWidgetBottom extends StatelessWidget {
                 children: [
                   const SizedBox(),
                   IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.notifications_outlined,
-                        size: 32,
+                      onPressed: () {
+                        setState(() {
+                          index = 0;
+                        });
+
+                      },
+                      icon: Icon(
+                        index == 0
+                            ? Icons.notifications
+                            : Icons.notifications_outlined,
+                        size: index == 0 ? 50 : 32,
                         color: Colors.black,
                       )),
                   const SizedBox(),
                   IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
+                      onPressed: () {
+                        setState(() {
+                          index = 1;
+                        });
+                      },
+                      icon: Icon(
                         Icons.home_outlined,
-                        size: 50,
+                        size: index == 1 ? 50 : 32,
                         color: Colors.black,
                       )),
                   const SizedBox(),
                   IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.person_outline,
-                        size: 32,
+                      onPressed: () {
+                        setState(() {
+                          index = 2;
+                        });
+                      },
+                      icon: Icon(
+                        index == 2 ? Icons.person : Icons.person_outline,
+                        size: index == 2 ? 50 : 32,
                         color: Colors.black,
                       )),
                   const SizedBox(),

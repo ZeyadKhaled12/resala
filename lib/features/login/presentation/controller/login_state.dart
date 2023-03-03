@@ -6,7 +6,8 @@ class LoginState extends Equatable {
   final String errorLoginMessage;
 
   const LoginState({this.login =
-  const Login(userName: '', isReferee: false, isTeam: false, token: ''),
+  const Login(userName: '', isReferee: false, isTeam: false, token: '',
+    leaders: [],brunch: '',activityName: '',name: '',image: '',members: []),
     this.loginRequestState = RequestState.loaded,
     this.errorLoginMessage = ''});
 

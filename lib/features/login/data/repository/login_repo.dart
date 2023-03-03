@@ -33,5 +33,10 @@ class LoginRepo extends BaseLoginRepo{
     return await baseLoginRemoteDataSource.checkIfLoginBefore(parameters);
   }
 
+  @override
+  Future<NoParameters> logout(NoParameters parameters) async{
+    return await baseLoginRemoteDataSource.logout(parameters);
+  }
+
 
 }

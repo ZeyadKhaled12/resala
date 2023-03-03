@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:resala/features/login/domain/usecases/logout_uc.dart';
 import '../../../../core/usecase/base_use_case.dart';
 import '../../../../core/utils/enums.dart';
 import '../../domain/entities/login.dart';
@@ -16,11 +17,13 @@ class LoginBloc extends Bloc<RegisterEvent, LoginState> {
   final LoginUc loginUc;
   final CaptureTokenUc captureTokenUc;
   final CheckIfLoginBeforeUc checkIfLoginBeforeUc;
+  final LogoutUc logoutUc;
 
-  LoginBloc(this.loginUc, this.captureTokenUc, this.checkIfLoginBeforeUc) : super(const LoginState()) {
+  LoginBloc(this.loginUc, this.captureTokenUc, this.checkIfLoginBeforeUc, this.logoutUc) : super(const LoginState()) {
     on<LoginEvent>(_login);
     on<CaptureTokenEvent>(_captureToken);
     on<CheckIfLoginBeforeEvent>(_checkIfLoginBefore);
+    on<LogoutEvent>(_logout);
   }
 
   FutureOr<void> _login(LoginEvent event, Emitter<LoginState> emit) async {
@@ -48,5 +51,9 @@ class LoginBloc extends Bloc<RegisterEvent, LoginState> {
       emit(state.copyWith(login: result));
     }
     emit(state.copyWith(loginRequestState: RequestState.loaded));
+  }
+
+  FutureOr<void> _logout(LogoutEvent event, Emitter<LoginState> emit) async{
+    await logoutUc.change(event.noParameters);
   }
 }

@@ -24,3 +24,12 @@ class GetRefActivitiesEvent extends RefEvent {
   @override
   List<Object> get props => [parameters];
 }
+
+class UpdateRefActivityEvent extends RefEvent {
+  final UpdateRefActivityParameters parameters;
+
+  const UpdateRefActivityEvent({required this.parameters});
+
+  @override
+  List<Object> get props => [parameters];
+}

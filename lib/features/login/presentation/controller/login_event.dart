@@ -34,5 +34,14 @@ class CheckIfLoginBeforeEvent extends RegisterEvent {
   List<Object> get props => [noParameters];
 }
 
+class LogoutEvent extends RegisterEvent {
+  final NoParameters noParameters;
+
+  const LogoutEvent({required this.noParameters});
+
+  @override
+  List<Object> get props => [noParameters];
+}
+
 
 

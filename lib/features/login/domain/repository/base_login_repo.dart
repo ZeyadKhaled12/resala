@@ -8,4 +8,5 @@ abstract class BaseLoginRepo{
   Future<Either<Failure, Login>> login(LoginParameters parameters);
   Future captureToken(Login parameters);
   Future<Login> checkIfLoginBefore(NoParameters parameters);
+  Future<NoParameters> logout(NoParameters parameters);
 }

@@ -26,8 +26,7 @@ class LoginScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (ctx) => GeneralWidgetBottom(
-                        token: state.login.token,
-                        isRef: state.login.isReferee)));
+                        login: state.login)));
           }
         },
         buildWhen: (previous, current) =>
@@ -37,9 +36,9 @@ class LoginScreen extends StatelessWidget {
               isLoading: context.watch<LoginBloc>().state.loginRequestState == RequestState.loading,
               loginFun: () {
                 if(usernameController.text.isEmpty){
-                  generalWidgetShowErrorMessage(context, 'Username is  required');
+                  generalWidgetShowErrorMessage(context, 'Username is required');
                 }else if(passcodeController.text.isEmpty){
-                  generalWidgetShowErrorMessage(context, 'Passcode is  required');
+                  generalWidgetShowErrorMessage(context, 'Passcode is required');
                 }else{
                   context.read<LoginBloc>().add(LoginEvent(
                       loginParameters: LoginParameters(

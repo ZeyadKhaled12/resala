@@ -5,6 +5,15 @@ class AppConstance {
   static const sharedPrefIsTeam = 'is_team';
   static const sharedPrefIsReferee = 'is_referee';
   static const sharedPrefToken = 'token';
+  static const sharedPrefImage = 'image';
+  static const sharedPrefName = 'name';
+  static const sharedPrefIActivityName = 'activity_name';
+  static const sharedPrefIActivityBrunch = 'brunch';
+  static const sharedPrefIActivityMembers = 'members';
+  static const sharedPrefIActivityLeaders = 'leaders';
+  static const sharedPrefBrunch = 'brunch';
+
+
   static const sharedPrefIsLoginBefore = 'is_login_before';
 
   static const accept = 'accepted';
@@ -21,8 +30,10 @@ class AppConstance {
       '$baseUrl/api/competition/category/referee/list';
 
 
-  static getRefActivitiesUrl(int categoryId, int page, Status status) =>
-      '$baseUrl/api/competition/category/referee/activities/list/$categoryId?page=$page&status=$status';
+  static getRefActivitiesUrl(int categoryId, String status) =>
+      '$baseUrl/api/competition/category/referee/activities/list/$categoryId?status=$status';
 
   static updateActivityUrl(int id) => '$baseUrl/api/activity/edit/$id';
+  static updateRefActivityUrl(int id) => '$baseUrl/api/activity/referee/update/$id';
+
 }

@@ -43,6 +43,7 @@ class CategoryWidgetBody extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ActivityDetailScreen(
+                                isRef: false,
                                     activity: activities[index],
                                     indexActivity: index,
                                     token: token,
